@@ -2,6 +2,11 @@
 autoload -U compinit
 compinit
 
+# load custom functions
+for def in ~/.zsh/functions/*; do
+  source $def
+done
+
 # history settings
 setopt hist_ignore_all_dups inc_append_history
 HISTFILE=~/.zhistory
