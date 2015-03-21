@@ -31,5 +31,8 @@ bindkey '^Y' accept-and-hold
 bindkey '^N' insert-last-word
 bindkey -s '^T' '^[Isudo ^[A'
 
+# aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
+
 # set up boxen
 [[ -f /opt/boxen/env.sh ]] && source /opt/boxen/env.sh
