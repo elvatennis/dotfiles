@@ -1,0 +1,4 @@
+[alias]
+  current-branch = !sh -c 'git rev-parse --abbrev-ref HEAD' -
+[include]
+  path = ~/.gitconfig.local
