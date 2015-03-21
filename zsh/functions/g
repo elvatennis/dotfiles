@@ -1,0 +1,11 @@
+# alias to git, with no arguments shortcut to 'git status'
+g() {
+  if [[ $# > 0 ]]; then
+    git $@
+  else
+    git status --short
+  fi
+}
+
+# complete g like git
+compdef g=git
