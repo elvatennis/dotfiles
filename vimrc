@@ -103,6 +103,8 @@ nnoremap <Up> :echoe "Wrong! You cheating scum!"<CR>
 nnoremap <Right> :echoe "Your mind just hasn't been the same since the electro-shock, has it?"<CR>
 
 " Color scheme
+set background=dark
+let g:solarized_termtrans = 1
 colorscheme solarized
 highlight NonText guibg=#060606
 highlight Folded guibg=#0A0A0A guifg=#9090D0
