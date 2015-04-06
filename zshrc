@@ -50,3 +50,6 @@ bindkey -s '^T' '^[Isudo ^[A'
 
 # set up boxen
 [[ -f /opt/boxen/env.sh ]] && source /opt/boxen/env.sh
+
+# TODO work around limitations of rcm
+export PATH="$HOME/.bin:$PATH"
