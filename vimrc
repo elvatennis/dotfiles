@@ -1,5 +1,5 @@
 " Leader
-let mapleader=" "
+let mapleader="\<Space>"
 
 set backspace=indent,eol
 set nobackup
@@ -111,3 +111,56 @@ highlight Folded guibg=#0A0A0A guifg=#9090D0
 
 " Run commands that require an interactive shell
 noremap <Leader>r :RunInInteractiveShell<space>
+
+" Re-balance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
+" TODO
+"nnoremap <leader>irb :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'irb'}<cr>
+" VTR - Vim tmux integration
+let g:VtrUseVtrMaps = 1
+let g:VtrGitCdUpOnOpen = 0
+let g:VtrPercentage = 30
+
+nnoremap <leader>va :VtrAttachToPane<cr>
+nmap <leader>fs :VtrFlushCommand<cr>:VtrSendCommandToRunner<cr>
+"nmap <C-f> :VtrSendLinesToRunner<cr>
+vmap <C-f> :VtrSendLinesToRunner<cr>
+
+nnoremap <leader>rj :VtrSendCommandToRunner be rake konacha<cr>
+nnoremap <leader>rs :VtrSendCommandToRunner rake<cr>
+
+nmap <leader>osr :VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>
+
+nnoremap <leader>sd :VtrSendCtrlD<cr>
+nnoremap <leader>q :VtrSendCommandToRunner q<cr>
+nnoremap <leader>sf :w<cr>:call SendFileViaVtr()<cr>
+nnoremap <leader>sl :VtrSendCommandToRunner <cr>
+
+function! SendFileViaVtr()
+  let runners = {
+        \ 'haskell': 'ghci',
+        \ 'ruby': 'ruby',
+        \ 'javascript': 'node',
+        \ 'python': 'python',
+        \ 'sh': 'sh'
+        \ }
+  if has_key(runners, &filetype)
+    let runner = runners[&filetype]
+    let local_file_path = expand('%')
+    execute join(['VtrSendCommandToRunner', runner, local_file_path])
+  else
+    echoerr 'Unable to determine runner'
+  endif
+endfunction
+
+" Python
+"let g:VtrStripLeadingWhitespace = 0
+"let g:VtrClearEmptyLines = 0
+"let g:VtrAppendNewline = 1
+
+" vim:ft=vim
