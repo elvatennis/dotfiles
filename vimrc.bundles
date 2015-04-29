@@ -16,6 +16,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'christoomey/vim-tmux-runner'
+Plugin 'elzr/vim-json'
 
 call vundle#end()
 filetype plugin indent on

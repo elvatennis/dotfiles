@@ -7,7 +7,7 @@ set nowritebackup
 set noswapfile
 set history=50
 set ruler                 " show cursor position on the cmdline
-set showcmd 
+set showcmd
 set incsearch
 set laststatus=2
 set autowrite
@@ -57,7 +57,7 @@ set shiftround
 set expandtab
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
+"set list listchars=tab:»·,trail:·,nbsp:·
 
 if executable('ag')
   " use Ag over Grep
@@ -128,8 +128,8 @@ let g:VtrPercentage = 30
 
 nnoremap <leader>va :VtrAttachToPane<cr>
 nmap <leader>fs :VtrFlushCommand<cr>:VtrSendCommandToRunner<cr>
-"nmap <C-f> :VtrSendLinesToRunner<cr>
-vmap <C-f> :VtrSendLinesToRunner<cr>
+nmap <C-d> :VtrSendLinesToRunner<cr>
+vmap <C-d> :VtrSendLinesToRunner<cr>
 
 nnoremap <leader>rj :VtrSendCommandToRunner be rake konacha<cr>
 nnoremap <leader>rs :VtrSendCommandToRunner rake<cr>
@@ -164,3 +164,13 @@ endfunction
 "let g:VtrAppendNewline = 1
 
 " vim:ft=vim
+
+" 'elzr/vim-json' todo move this to rcplugins
+let g:vim_json_syntax_conceal = 0
+
+" Requires 'npm install json -g'
+function s:PrettyJSON()
+  %!json
+  set filetype=json
+endfunction
+command! PrettyJSON :call <sid>PrettyJSON()
